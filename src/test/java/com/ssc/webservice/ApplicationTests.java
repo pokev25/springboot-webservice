@@ -1,4 +1,4 @@
-package com.ssc.springwebservice;
+package com.ssc.webservice;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
