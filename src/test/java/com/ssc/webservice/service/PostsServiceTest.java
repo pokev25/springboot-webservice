@@ -3,16 +3,16 @@ package com.ssc.webservice.service;
 import com.ssc.webservice.domain.Posts;
 import com.ssc.webservice.domain.PostsRepository;
 import com.ssc.webservice.dto.posts.PostsSaveRequestDto;
-import org.junit.After;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
 @SpringBootTest
 public class PostsServiceTest {
 
@@ -22,7 +22,7 @@ public class PostsServiceTest {
     @Autowired
     private PostsRepository postsRepository;
 
-    @After
+    @AfterEach
     public void cleanup(){
         postsRepository.deleteAll();
     }
@@ -31,9 +31,9 @@ public class PostsServiceTest {
     public void Dto데이터가_posts테이블에_저장된다(){
         //given
         PostsSaveRequestDto dto = PostsSaveRequestDto.builder()
-                .title("테스트 타이틀")
-                .content("테스트")
-                .author("pokev25@test.com")
+                .title("테스트1")
+                .content("테스트1의 본문")
+                .author("test1@gmail.com")
                 .build();
         //when
         postsService.save(dto);
